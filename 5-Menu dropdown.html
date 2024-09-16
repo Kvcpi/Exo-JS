@@ -5,10 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Dropdown</title>
     
-    <style>#menu {
+    <style>
+
+    @keyframes underlineAnimation {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        /* Style pour le titre animé */
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            position: relative;
+            color: #333;
+            text-align: center;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            background: #39d2f8;
+            width: 100%;
+            animation: underlineAnimation 2s ease-in-out infinite;
+        }
+        .menu-container {
+            position: relative;
+            display: inline-block;
+        }
+    #menu {
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 18px;
+        border-radius: 0px;
+        width: 200px;
+        height: 40px;
+        font-weight: bold;
+        border: 2px solid #ffffff;
+        transition: 0.3s;
+        box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.3);
+        background-color: [object object];
+        background-image: linear-gradient(90deg, #39d2f8, rgba(48, 97, 96, 1));
+    }
+
+    #menu:hover {
+        box-shadow: 0 0 rgba(0, 0, 0, .3); 
     }
 
     /* Style de la liste du menu (cachée par défaut) */
@@ -20,37 +71,50 @@
         border: 1px solid #ccc;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         display: none; /* Caché par défaut */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px); /* Légère translation vers le haut */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        border-radius: 4px;
     }
 
     /* Style des items du menu */
     .dropdown a {
+        
         display: block;
-        padding: 10px 20px;
+        padding: 12px 20px;
         color: #333;
         text-decoration: none;
         font-size: 16px;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
     }
 
     .dropdown a:hover {
         background-color: #f1f1f1;
+        padding-left: 30px;
     }
 
     /* Classe active pour montrer le menu */
     .dropdown.active {
         display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 </style>
 </head>
 <body>
     <h1>Menu Dropdown</h1>
+    <div class="menu-container">
     <button id="menu">Menu</button>
 
     <!-- Contenu du menu -->
     <div id="dropdownMenu" class="dropdown">
-        <a href="#">Onglet 1</a>
-        <a href="#">Onglet 2</a>
-        <a href="#">Onglet 3</a>
+        <a href="#">Fruits</a>
+        <a href="#">Légumes</a>
+        <a href="#">Viandes</a>
     </div>
+</div>
 
     <script>
 
@@ -60,6 +124,12 @@
         
         menuButton.addEventListener("click", function() {
             dropdownMenu.classList.toggle("active"); 
+        });
+
+        window.addEventListener("click", function(e) {
+            if (!menuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove("active");
+            }
         });
     
     </script>
