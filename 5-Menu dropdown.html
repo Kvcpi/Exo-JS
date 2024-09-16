@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Dropdown</title>
+    
+    <style>#menu {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Style de la liste du menu (cachée par défaut) */
+    .dropdown {
+        position: absolute;
+        top: 50px; /* Ajuste la position selon l'endroit où tu veux que le menu apparaisse */
+        left: 0;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none; /* Caché par défaut */
+    }
+
+    /* Style des items du menu */
+    .dropdown a {
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .dropdown a:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Classe active pour montrer le menu */
+    .dropdown.active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+    <h1>Menu Dropdown</h1>
+    <button id="menu">Menu</button>
+
+    <!-- Contenu du menu -->
+    <div id="dropdownMenu" class="dropdown">
+        <a href="#">Onglet 1</a>
+        <a href="#">Onglet 2</a>
+        <a href="#">Onglet 3</a>
+    </div>
+
+    <script>
+
+        const menuButton = document.getElementById("menu");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        
+        menuButton.addEventListener("click", function() {
+            dropdownMenu.classList.toggle("active"); 
+        });
+    
+    </script>
+</body>
+</html>
