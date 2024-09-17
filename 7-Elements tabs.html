@@ -7,67 +7,90 @@
   <style>
     /* Style pour les boutons de l'onglet */
     .tab {
-    display: flex;
-    border-bottom: 1px solid #ccc;
+      display: flex;
+      border-bottom: 1px solid #ccc;
     }
 
     .tab button {
-    background-color: inherit;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-    flex: 1;
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+      flex: 1;
     }
 
     .tab button:hover {
-    background-color: #ddd;
+      background-color: #ddd;
     }
 
     .tab button.active {
-    background-color: #ccc;
+      background-color: #ccc;
     }
 
     .tabcontent {
-    display: none;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-top: none;
+      display: none;
+      padding: 16px;
+      border: 1px solid #ccc;
+      border-top: none;
     }
+  </style>
+</head>
+<body>
 
-    </style>
-    </head>
-    <body>
+<h2>Tabs</h2>
+<p>Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects:</p>
 
-    <h2>Tabs</h2>
-    <p>Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects:</p>
+<div class="tab">
+  <!-- On utilise 'data-id' pour relier le bouton à son contenu -->
+  <button data-id="London">London</button>
+  <button data-id="Paris">Paris</button>
+  <button data-id="Tokyo">Tokyo</button>
+</div>
 
-    <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-    </div>
+<div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
+</div>
 
-    <div id="London" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
-    </div>
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p>
+</div>
 
-    <div id="Paris" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
-    </div>
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
 
-    <div id="Tokyo" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-    </div>
+<script>
+// Sélectionner tous les boutons d'onglets
+const tabButtons = document.querySelectorAll(".tab button");
+const tabContents = document.querySelectorAll(".tabcontent");
 
-    <script>
-        
+tabButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Cacher tous les contenus d'onglets
+    tabContents.forEach(div => div.style.display = 'none');
 
-    </script>
-    </body>
-    </html>
+    // Désactiver tous les boutons d'onglets
+    tabButtons.forEach(button => button.classList.remove('active'));
+
+    // Afficher le contenu correspondant à l'onglet cliqué via 'data-id'
+    const targetContent = document.getElementById(this.getAttribute('data-id'));
+    targetContent.style.display = 'block';
+
+    // Ajouter la classe 'active' au bouton cliqué
+    this.classList.add('active');
+  });
+});
+
+// Afficher par défaut le premier onglet
+document.getElementById('London').style.display = 'block';
+tabButtons[0].classList.add('active');
+</script>
+
+</body>
+</html>

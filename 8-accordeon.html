@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordeon</title>
+    <style>
+        .accordion {
+            width: 100%;
+        }
+
+        .accordion button {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            font-size: 17px;
+        }
+
+        .accordion button.active{
+            background-color: #ccc;
+        }
+        
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+
+        .panel.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Accordéon Menu</h2>
+
+<div class="accordion">
+    <button data-id="London">London</button>
+    <div id="London" class="panel">
+        <h3>London</h3>
+        <p>London is the capital city of England.</p>
+    </div>
+
+    <button data-id="Paris">Paris</button>
+    <div id="Paris" class="panel">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p>
+    </div>
+
+    <button data-id="Tokyo">Tokyo</button>
+    <div id="Tokyo" class="panel">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+</div>
+
+<script>
+    const accordionButtons = document.querySelectorAll('.accordion button');
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Fermer tous les panneaux
+            const allPanels = document.querySelectorAll('.panel');
+            allPanels.forEach(panel => panel.classList.remove('show'));
+
+            // Fermer tous les boutons actifs
+            accordionButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Activer le panneau et le bouton correspondant
+            const panel = document.getElementById(this.getAttribute('data-id'));
+            panel.classList.add('show');
+            this.classList.add('active');
+        });
+    });
+
+</script>
+
+</body>
+</html>
