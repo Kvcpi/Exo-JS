@@ -7,31 +7,6 @@
     
     <style>
 
-    @keyframes underlineAnimation {
-            0% { width: 0%; }
-            50% { width: 100%; }
-            100% { width: 0%; }
-        }
-
-        /* Style pour le titre animé */
-        h1 {
-            font-size: 3em;
-            font-weight: bold;
-            position: relative;
-            color: #333;
-            text-align: center;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 4px;
-            background: #39d2f8;
-            width: 100%;
-            animation: underlineAnimation 2s ease-in-out infinite;
-        }
         .menu-container {
             position: relative;
             display: inline-block;
