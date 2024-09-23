@@ -27,12 +27,31 @@
 /* Styles pour les boutons */
 .menu-toggle, .menu-close {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Forme circulaire */
+    background-color: #fe5151; /* Couleur de fond */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour effet de profondeur */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle:hover, .menu-close:hover {
+    background-color: #ff7043; /* Couleur de fond changeante au survol */
+    transform: scale(1.1); /* Légère mise à l'échelle au survol */
 }
 
 .menu-toggle svg, .menu-close svg {
     width: 24px;
     height: 24px;
     fill: #fff;
+    transition: fill 0.3s ease;
+}
+
+.menu-toggle:hover svg, .menu-close:hover svg {
+    fill: #ffdd57; /* Couleur de l'icône changeante au survol */
 }
 
 /* Styles par défaut pour les grands écrans */
@@ -44,16 +63,35 @@
 }
 
 .nav-menu li {
-    margin: 0 15px;
+    margin: 10px;
 }
 
 .nav-menu a {
+    position: relative;
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
-    text-decoration: underline;
+    color: #ffdd57; 
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Positionne la ligne en dessous du texte */
+    width: 100%;
+    height: 2px;
+    background-color: #ffdd57;
+    transform: scaleX(0); /* Cache la ligne par défaut */
+    transition: transform 0.3s ease; /* Transition douce sur la ligne */
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1); /* Affiche la ligne lors du survol */
+    transform-origin: left; /* L'animation part de la gauche */
 }
 
 .menu-toggle {
