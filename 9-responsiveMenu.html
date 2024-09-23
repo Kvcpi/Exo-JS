@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Responsive</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+    position: relative;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+/* Styles pour les boutons */
+.menu-toggle, .menu-close {
+    cursor: pointer;
+}
+
+.menu-toggle svg, .menu-close svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+/* Styles par défaut pour les grands écrans */
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none; /* Cacher le bouton hamburger sur les grands écrans */
+}
+
+.menu-close {
+    display: none; /* Cacher le bouton de fermeture sur les grands écrans */
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Le menu est caché par défaut sur les petits écrans */
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px; /* Ajustez selon la hauteur de la barre de navigation */
+        left: 0;
+        z-index: 1; /* Assurez-vous que le menu se superpose aux autres éléments */
+    }
+
+    .nav-menu.active {
+        display: flex; /* Affiche le menu lorsque le bouton hamburger est cliqué */
+    }
+
+    .menu-toggle {
+        display: flex; /* Affiche le bouton hamburger uniquement sur les petits écrans */
+    }
+
+    .menu-close {
+        display: none; /* Caché par défaut */
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2; /* Assurez-vous que le bouton de fermeture est au-dessus du menu */
+    }
+
+    .nav-menu.active + .menu-close {
+        display: flex; /* Affiché lorsque le menu est ouvert */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>MonSite</h1>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
+            </svg>
+        </div>
+        <div class="menu-close" id="menu-close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
+            </svg>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const navMenu = document.getElementById('nav-menu');
+
+    // Ouvrir le menu et afficher le bouton de fermeture
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.add('active');
+        menuClose.style.display = 'flex'; // Affiche le bouton de fermeture
+        menuToggle.style.display = 'none'; // Cache le bouton hamburger
+    });
+
+    // Fermer le menu et cacher le bouton de fermeture
+    menuClose.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuClose.style.display = 'none'; // Cache le bouton de fermeture
+        menuToggle.style.display = 'flex'; // Affiche le bouton hamburger
+    });
+});
+
+    </script>
+</body>
+</html>
