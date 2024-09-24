@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercice 2 JSON</title>
+</head>
+<body>
+    <h1>Exercice 2</h1>
+    <script>
+        const livre = {
+            titre: "Le Seigneur des anneaux",
+            auteur: "JRR Tolkien",
+            nombrePages: 120,
+            lu: false,
+            description: function() {
+                let statut = this.lu ? "lu" : "non lu";
+                return `Le livre "${this.titre}" a été écrit par l'auteur ${this.auteur}, contient ${this.nombrePages} pages et est ${statut}.`;
+            }
+        };
+
+        console.log(livre.description());
+    </script>
+</body>
+</html>

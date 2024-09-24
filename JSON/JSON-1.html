@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercice 1 JSON</title>
+</head>
+<body>
+    <h1>Exercice 1</h1>
+    <script>
+        const livre = {
+            titre: "Le Seigneur des anneaux",
+            auteur: "JRR Tolkien",
+            nombrePages: "120 pages",
+        }
+        livre.desciption = function(){
+            return "Le livre " + this.titre + " à été écrit par l'auteur " + this.auteur + " et contient " + this.nombrePages + ".";
+        }
+        console.log(livre.desciption());
+    </script>
+</body>
+</html>
